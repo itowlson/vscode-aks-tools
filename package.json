@@ -8,7 +8,14 @@
         "vscode": "^1.33.0"
     },
     "categories": [
-        "Other"
+        "Azure"
+    ],
+    "keywords": [
+        "kubernetes",
+        "azure",
+        "aks",
+        "acs",
+        "kubernetes-extension-cloud-provider"
     ],
     "activationEvents": [
         "onView:kubernetes.cloudExplorer"
