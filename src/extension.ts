@@ -10,6 +10,7 @@ import * as clusters from './commands/utils/clusters';
 import { Reporter, reporter } from './commands/utils/reporter';
 import { browsePipeline } from './commands/deployAzurePipeline/browsePipeline';
 import { configurePipeline } from './commands/deployAzurePipeline/configureCicdPipeline/configurePipeline';
+import { AzureServiceBrowser } from './ui/aso/azure-service-browser';
 
 export async function activate(context: vscode.ExtensionContext) {
     const cloudExplorer = await k8s.extension.cloudExplorer.v1;
@@ -46,6 +47,13 @@ export async function activate(context: vscode.ExtensionContext) {
         });
     } else {
         vscode.window.showWarningMessage(cloudExplorer.reason);
+    }
+
+    const clusterExplorer = await k8s.extension.clusterExplorer.v1;
+    if (clusterExplorer.available) {
+        clusterExplorer.api.registerNodeContributor(new AzureServiceBrowser(clusterExplorer.api));
+    } else {
+        vscode.window.showWarningMessage(clusterExplorer.reason);
     }
 }
 
