@@ -23,6 +23,7 @@
     ],
     "activationEvents": [
         "onView:kubernetes.cloudExplorer",
+        "onView:extension.vsKubernetesExplorer",
         "onCommand:aks.detectorDiagnostics",
         "onCommand:aks.periscope"
     ],
